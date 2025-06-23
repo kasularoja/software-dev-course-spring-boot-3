@@ -1,6 +1,17 @@
 package com.example.springBoot2.models;
 
-public class Movie  {
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
+@Entity
+public class Movie {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     private String name;
     private int year;
     private String director;
@@ -9,11 +20,19 @@ public class Movie  {
     public Movie() {
     }
 
-    public Movie(String name, String director, int year, int duration) {
+    public Movie(String name, String director, int year, int runtime) {
         this.name = name;
         this.year = year;
         this.director = director;
-        this.runtime = duration;
+        this.runtime = runtime;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
